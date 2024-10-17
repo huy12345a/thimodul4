@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Coupon</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Update Coupon</h1>
+    <p>
+        <a class="btn btn-primary mb-3" href="/coupons">Coupon List</a>
+    </p>
+    <th:block th:if="${message}">
+        <div class="alert alert-info" role="alert" th:text="${message}"></div>
+    </th:block>
+    <form th:action="@{/coupons/update}" th:object="${coupon}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table class="table">
+            <tr>
+                <td><label for="title">Title:</label></td>
+                <td><input type="text" class="form-control" id="title" th:field="*{tieuDe}"/></td>
+            </tr>
+            <tr>
+                <td><label for="discount">Discount Amount:</label></td>
+                <td><input type="number" class="form-control" id="discount" th:field="*{mucGiamGia}" step="0.01"/></td>
+            </tr>
+            <tr>
+                <td><label for="startTime">Start Time:</label></td>
+                <td><input type="datetime-local" class="form-control" id="startTime" th:field="*{thoiGianBatDau}"/></td>
+            </tr>
+            <tr>
+                <td><label for="endTime">End Time:</label></td>
+                <td><input type="datetime-local" class="form-control" id="endTime" th:field="*{thoiGianKetThuc}"/></td>
+            </tr>
+            <tr>
+                <td><label for="details">Details:</label></td>
+                <td><textarea class="form-control" id="details" th:field="*{chiTiet}"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="btn btn-success">Update Coupon</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Coupon</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Create Coupon</h1>
+    <p>
+        <a class="btn btn-primary" href="/coupons">Coupon list</a>
+    </p>
+    <th:block th:if="${message}">
+        <div class="alert alert-info" role="alert" th:text="${message}"></div>
+    </th:block>
+    <form th:action="@{/coupons/create}" th:object="${coupon}" method="post" class="mt-4">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" th:field="*{tieuDe}" required />
+        </div>
+        <div class="form-group">
+            <label for="startTime">Start Time:</label>
+            <input type="datetime-local" class="form-control" id="startTime" th:field="*{thoiGianBatDau}" required />
+        </div>
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="datetime-local" class="form-control" id="endTime" th:field="*{thoiGianKetThuc}" required />
+        </div>
+        <div class="form-group">
+            <label for="discount">Discount Amount:</label>
+            <input type="number" class="form-control" id="discount" th:field="*{mucGiamGia}" required />
+        </div>
+        <div class="form-group">
+            <label for="details">Details:</label>
+            <textarea class="form-control" id="details" th:field="*{chiTiet}" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Create Coupon</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
